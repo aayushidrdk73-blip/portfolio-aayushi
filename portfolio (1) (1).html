@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aayushi Choudhary | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --cream: #FBEFE8;
+    --paper: #FFF9F4;
+    --rose: #EDB3BC;
+    --pink: #F7D3D0;
+    --wine: #A94F58;
+    --burgundy: #6B3140;
+    --terracotta: #D2704F;
+    --sand: #F0CB8E;
+    --gold: #E8A93B;
+    --plum: #7A4C9A;
+    --lavender: #DCCBF2;
+    --teal: #3F9C9B;
+    --mint: #CDEADF;
+    --sky: #BFDDF0;
+    --ink: #35252A;
+    --muted: #7F6B6F;
+    --white: #FFFFFF;
+    --grad-warm: linear-gradient(135deg, #E8A93B, #D2704F 50%, #A94F58);
+    --grad-cool: linear-gradient(135deg, #3F9C9B, #7A4C9A);
+    --grad-soft: linear-gradient(135deg, #F7D3D0, #DCCBF2 55%, #BFDDF0);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container { width: 88%; max-width: 1200px; margin: auto; }
+
+/* reveal animation */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.show { opacity: 1; transform: none; }
+
+/* NAVIGATION */
+nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(251,239,232,0.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(107,49,64,0.12);
+}
+.nav-content { min-height: 76px; display: flex; justify-content: space-between; align-items: center; }
+.logo {
+    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700;
+    background: var(--grad-warm); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.nav-links { display: flex; gap: 26px; list-style: none; font-size: 13px; font-weight: 600; color: var(--muted); }
+.nav-links a { position: relative; padding-bottom: 3px; }
+.nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
+    background: var(--grad-warm); transition: .3s;
+}
+.nav-links a:hover { color: var(--terracotta); }
+.nav-links a:hover::after { width: 100%; }
+
+/* HERO */
+.hero {
+    min-height: 700px; display: flex; align-items: center; padding: 90px 0;
+    overflow: hidden; position: relative;
+    background:
+        radial-gradient(circle at 85% 10%, rgba(220,203,242,.7), transparent 40%),
+        radial-gradient(circle at 5% 90%, rgba(205,234,223,.8), transparent 40%),
+        radial-gradient(circle at 60% 100%, rgba(247,211,208,.9), transparent 45%);
+}
+.blob { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .5; animation: float 9s ease-in-out infinite; }
+.blob.b1 { width: 130px; height: 130px; background: var(--sand); top: 12%; left: 6%; }
+.blob.b2 { width: 80px; height: 80px; background: var(--teal); opacity: .25; bottom: 14%; left: 44%; animation-delay: -3s; }
+.blob.b3 { width: 190px; height: 190px; background: var(--rose); top: -50px; right: 22%; animation-delay: -5s; }
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-22px) } }
+
+.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 70px; align-items: center; position: relative; }
+
+.eyebrow {
+    display: inline-block; color: var(--plum); background: rgba(122,76,154,.1);
+    padding: 7px 16px; border-radius: 30px;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; margin-bottom: 22px;
+}
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(55px, 7vw, 90px); line-height: 1.05; font-weight: 500; color: var(--burgundy);
+}
+.hero h1 span {
+    font-style: italic;
+    background: var(--grad-warm); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-description { max-width: 520px; margin: 28px 0; color: var(--muted); font-size: 16px; }
+
+.hero-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+.chip {
+    display: flex; align-items: center; gap: 8px; padding: 8px 15px; border-radius: 30px;
+    background: var(--white); font-size: 12px; font-weight: 700; color: var(--burgundy);
+    box-shadow: 0 6px 20px rgba(107,49,64,.08);
+}
+.chip i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+.btn {
+    padding: 13px 25px; border-radius: 40px; font-size: 13px; font-weight: 700; display: inline-block;
+    transition: .3s; cursor: pointer; border: 1px solid var(--burgundy); font-family: inherit;
+}
+.btn-primary { background: var(--burgundy); color: white; }
+.btn-primary:hover { background: var(--terracotta); border-color: var(--terracotta); transform: translateY(-3px); }
+.btn-outline { color: var(--burgundy); background: transparent; }
+.btn-outline:hover { background: var(--pink); }
+
+/* HERO ART */
+.hero-art { display: flex; justify-content: center; position: relative; }
+.profile-card {
+    width: 320px; height: 420px; border-radius: 180px 180px 25px 25px;
+    background: linear-gradient(160deg, #F0CB8E 0%, #EDB3BC 40%, #D2704F 75%, #A94F58 100%);
+    display: flex; align-items: center; justify-content: center; position: relative;
+    box-shadow: 20px 25px 60px rgba(107,49,64,0.22); overflow: hidden;
+}
+.profile-card::before {
+    content: ""; position: absolute; width: 230px; height: 230px;
+    border: 1px solid rgba(255,255,255,0.6); border-radius: 50%;
+}
+.profile-card::after {
+    content: ""; position: absolute; width: 300px; height: 300px; bottom: -150px; right: -110px;
+    background: rgba(255,255,255,.18); border-radius: 50%;
+}
+.profile-initials { font-family: 'Playfair Display', serif; font-size: 110px; color: white; z-index: 1; font-style: italic; }
+
+.floating-note {
+    position: absolute; background: var(--paper); padding: 13px 20px; border-radius: 14px;
+    box-shadow: 0 12px 35px rgba(107,49,64,0.15); font-size: 12px; font-weight: 700; color: var(--burgundy);
+    animation: float 7s ease-in-out infinite;
+}
+.note-one { top: 65px; right: -30px; border-left: 4px solid var(--gold); }
+.note-two { bottom: 65px; left: -35px; border-left: 4px solid var(--teal); animation-delay: -3s; }
+.note-three { top: 200px; left: -50px; border-left: 4px solid var(--plum); animation-delay: -5s; background: var(--lavender); }
+.hero-stamp {
+    position: absolute; bottom: 5px; right: 5px; font-family: 'Playfair Display', serif;
+    font-size: 15px; font-style: italic; color: var(--burgundy); transform: rotate(-10deg);
+}
+
+/* MARQUEE */
+.marquee { background: var(--burgundy); overflow: hidden; padding: 14px 0; white-space: nowrap; }
+.marquee-track { display: inline-block; animation: scroll 28s linear infinite; }
+.marquee span {
+    font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: var(--sand); margin: 0 22px;
+}
+.marquee span.dot { color: var(--rose); font-style: normal; margin: 0; }
+@keyframes scroll { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* SECTION GENERAL */
+section { padding: 100px 0; }
+.section-label { color: var(--terracotta); text-transform: uppercase; letter-spacing: 4px; font-size: 11px; font-weight: 700; margin-bottom: 12px; }
+.section-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(35px, 5vw, 55px);
+    line-height: 1.2; color: var(--burgundy); font-weight: 500; margin-bottom: 25px;
+}
+.section-intro { max-width: 650px; color: var(--muted); margin-bottom: 45px; }
+
+/* ABOUT */
+.about { background: var(--paper); }
+.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 75px; align-items: center; }
+.about-art {
+    min-height: 390px; border-radius: 22px; background: var(--grad-soft);
+    display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden;
+}
+.about-art::before, .about-art::after { content: ""; position: absolute; border: 1px solid rgba(122,76,154,0.35); border-radius: 50%; }
+.about-art::before { width: 280px; height: 280px; }
+.about-art::after { width: 210px; height: 210px; border-color: rgba(63,156,155,.4); }
+.about-symbol { font-family: 'Playfair Display', serif; font-size: 105px; color: var(--plum); z-index: 1; font-style: italic; }
+.about-text { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+.tag { padding: 9px 16px; border-radius: 30px; font-size: 11px; font-weight: 700; color: var(--burgundy); }
+.tag:nth-child(1) { background: var(--pink); }
+.tag:nth-child(2) { background: var(--mint); }
+.tag:nth-child(3) { background: var(--lavender); }
+.tag:nth-child(4) { background: var(--sand); }
+.tag:nth-child(5) { background: var(--sky); }
+
+/* EDUCATION */
+.education { background: var(--cream); }
+.education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.edu-card {
+    background: var(--paper); padding: 35px; border-radius: 18px; border: 1px solid rgba(107,49,64,0.1);
+    transition: .3s; position: relative; overflow: hidden;
+}
+.edu-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px; }
+.edu-card:nth-child(1)::before { background: var(--grad-warm); }
+.edu-card:nth-child(2)::before { background: var(--grad-cool); }
+.edu-card:nth-child(3)::before { background: linear-gradient(90deg, var(--rose), var(--plum)); }
+.edu-card:nth-child(4)::before { background: linear-gradient(90deg, var(--teal), var(--sky)); }
+.edu-card:hover { transform: translateY(-7px); box-shadow: 0 18px 40px rgba(107,49,64,0.12); }
+.edu-number { font-family: 'Playfair Display', serif; font-size: 45px; color: var(--rose); margin-bottom: 10px; }
+.edu-card h3 { font-family: 'Playfair Display', serif; font-size: 25px; color: var(--burgundy); margin-bottom: 8px; }
+.edu-card h4 { color: var(--terracotta); font-size: 13px; margin-bottom: 15px; }
+.edu-card p { color: var(--muted); font-size: 13px; }
+.edu-date { display: inline-block; margin-top: 20px; background: var(--pink); padding: 6px 13px; border-radius: 20px; font-size: 11px; color: var(--burgundy); font-weight: 700; }
+
+/* ACHIEVEMENTS */
+.achievements {
+    background: linear-gradient(160deg, #5A2938 0%, #6B3140 45%, #4A2E5C 100%);
+    color: white; position: relative; overflow: hidden;
+}
+.achievements::before {
+    content: ""; position: absolute; width: 520px; height: 520px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,169,59,.25), transparent 65%); top: -180px; left: -150px;
+}
+.achievements .container { position: relative; }
+.achievements .section-title { color: var(--cream); }
+.achievements .section-label { color: var(--sand); }
+.achievements .section-intro { color: #E5C9C8; }
+
+.featured {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 30px; align-items: center;
+    padding: 32px 38px; margin-bottom: 22px; border-radius: 22px;
+    background: linear-gradient(120deg, rgba(232,169,59,.95), rgba(210,112,79,.95) 55%, rgba(169,79,88,.95));
+    color: #fff; box-shadow: 0 25px 60px rgba(0,0,0,.28); position: relative; overflow: hidden;
+}
+.featured::after {
+    content: "★"; position: absolute; right: 20px; top: -30px; font-size: 170px; color: rgba(255,255,255,.12);
+}
+.featured .medal {
+    width: 92px; height: 92px; border-radius: 50%; background: rgba(255,255,255,.22);
+    border: 2px dashed rgba(255,255,255,.7); display: flex; align-items: center; justify-content: center;
+    font-size: 40px;
+}
+.featured h3 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; }
+.featured p { font-size: 14px; opacity: .92; margin-top: 6px; }
+.featured .rank-big { font-family: 'Playfair Display', serif; font-size: 70px; font-style: italic; line-height: 1; text-align: right; z-index: 1; }
+.featured .rank-big small { display: block; font-size: 11px; letter-spacing: 3px; font-style: normal; font-family: 'DM Sans'; font-weight: 700; opacity: .85; }
+
+.achievement-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
+.achievement-card {
+    padding: 27px 22px; border: 1px solid rgba(255,255,255,0.2); border-radius: 15px;
+    background: rgba(255,255,255,0.07); transition: .3s;
+}
+.achievement-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-5px); }
+.achievement-card h3 { font-family: 'Playfair Display', serif; font-size: 38px; margin-bottom: 10px; }
+.achievement-card:nth-child(1) h3 { color: var(--sand); }
+.achievement-card:nth-child(2) h3 { color: #F6B6C0; }
+.achievement-card:nth-child(3) h3 { color: #FFC857; }
+.achievement-card:nth-child(4) h3 { color: #9FE0D6; }
+.achievement-card:nth-child(5) h3 { color: var(--lavender); }
+.achievement-card:nth-child(3) { border-color: rgba(255,200,87,.6); background: rgba(255,200,87,.12); }
+.achievement-card p { font-size: 12px; color: #F0DAD7; }
+
+/* CHARTS */
+.charts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.chart-card {
+    background: rgba(255,255,255,.95); color: var(--ink); border-radius: 20px; padding: 26px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+.chart-card h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--burgundy); margin-bottom: 4px; }
+.chart-card .sub { font-size: 11px; color: var(--muted); margin-bottom: 18px; }
+
+/* bar chart (scores) */
+.bars { display: flex; justify-content: space-around; align-items: flex-end; height: 190px; border-bottom: 1px solid #e8d8d4; padding: 0 6px; }
+.vbar { width: 70px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.vbar .fill {
+    width: 100%; border-radius: 12px 12px 0 0; height: 0; transition: height 1.4s cubic-bezier(.2,.8,.2,1);
+    display: flex; justify-content: center; padding-top: 8px; color: #fff; font-weight: 700; font-size: 13px;
+}
+.vbar.v1 .fill { background: linear-gradient(180deg, var(--gold), var(--terracotta)); }
+.vbar.v2 .fill { background: linear-gradient(180deg, var(--plum), var(--wine)); }
+.bar-labels { display: flex; justify-content: space-around; font-size: 11px; font-weight: 700; color: var(--muted); padding-top: 8px; }
+.bar-labels span { width: 90px; text-align: center; }
+
+/* donut */
+.donut-wrap { display: flex; flex-direction: column; align-items: center; }
+.donut { width: 170px; height: 170px; transform: rotate(-90deg); }
+.donut .bg { fill: none; stroke: var(--lavender); stroke-width: 14; }
+.donut .fg { fill: none; stroke: url(#dgrad); stroke-width: 14; stroke-linecap: round; stroke-dasharray: 0 100; transition: stroke-dasharray 1.6s cubic-bezier(.2,.8,.2,1); }
+.donut-center { position: absolute; text-align: center; margin-top: 52px; }
+.donut-center b { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--plum); display: block; line-height: 1; }
+.donut-center small { font-size: 10px; color: var(--muted); letter-spacing: 2px; font-weight: 700; }
+.donut-holder { position: relative; display: flex; justify-content: center; }
+
+/* rank ladder */
+.ranks { display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
+.rank-row .rl { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--burgundy); margin-bottom: 6px; }
+.rank-track { height: 16px; border-radius: 20px; background: var(--cream); overflow: hidden; }
+.rank-fill { height: 100%; width: 0; border-radius: 20px; transition: width 1.5s cubic-bezier(.2,.8,.2,1); }
+.rank-fill.r1 { background: linear-gradient(90deg, var(--gold), var(--terracotta)); }
+.rank-fill.r2 { background: linear-gradient(90deg, var(--teal), var(--plum)); }
+.chart-note { font-size: 10.5px; color: var(--muted); margin-top: 16px; }
+
+/* EXPERIENCE */
+.experience { background: var(--paper); }
+.experience-list { border-left: 2px solid var(--rose); margin-left: 10px; padding-left: 35px; }
+.experience-item { position: relative; padding-bottom: 42px; }
+.experience-item::before {
+    content: ""; position: absolute; width: 13px; height: 13px; background: var(--terracotta);
+    border: 4px solid var(--paper); outline: 1px solid var(--terracotta); border-radius: 50%; left: -44px; top: 7px;
+}
+.experience-item:nth-child(2)::before { background: var(--teal); outline-color: var(--teal); }
+.experience-item:nth-child(3)::before { background: var(--plum); outline-color: var(--plum); }
+.experience-item h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--burgundy); }
+.experience-item h4 { color: var(--terracotta); font-size: 12px; margin: 5px 0 12px; }
+.experience-item p { color: var(--muted); font-size: 14px; max-width: 750px; }
+
+/* SKILLS */
+.skills { background: var(--cream); }
+.skills-top { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.skill-group { background: var(--paper); padding: 30px; border-radius: 18px; box-shadow: 0 10px 30px rgba(107,49,64,.05); }
+.skill-group h3 { font-family: 'Playfair Display', serif; color: var(--burgundy); font-size: 24px; margin-bottom: 22px; }
+.skill { margin-bottom: 20px; }
+.skill-info { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+.skill-track { height: 8px; background: var(--pink); border-radius: 20px; overflow: hidden; }
+.skill-fill { height: 100%; width: 0; border-radius: 20px; transition: width 1.4s cubic-bezier(.2,.8,.2,1); }
+.skill-group:nth-child(1) .skill-fill { background: linear-gradient(90deg, var(--wine), var(--terracotta), var(--gold)); }
+.skill-group:nth-child(2) .skill-fill { background: linear-gradient(90deg, var(--teal), var(--plum)); }
+.skill-group:nth-child(2) .skill-track { background: var(--lavender); }
+.radar-card { display: flex; flex-direction: column; align-items: center; }
+.radar-card svg { width: 100%; max-width: 360px; height: auto; }
+
+/* INTERESTS */
+.interests { background: var(--grad-soft); text-align: center; }
+.interest-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 35px; }
+.interest {
+    padding: 15px 25px; border-radius: 40px; background: var(--paper); color: var(--burgundy);
+    font-family: 'Playfair Display', serif; font-size: 17px; transition: .3s; box-shadow: 0 8px 20px rgba(107,49,64,.08);
+}
+.interest:nth-child(3n+1) { border-bottom: 3px solid var(--gold); }
+.interest:nth-child(3n+2) { border-bottom: 3px solid var(--teal); }
+.interest:nth-child(3n) { border-bottom: 3px solid var(--plum); }
+.interest:hover { background: var(--burgundy); color: white; transform: rotate(-2deg) translateY(-4px); }
+
+/* CONTACT */
+.contact {
+    background: linear-gradient(150deg, #6B3140, #4A2E5C);
+    text-align: center; color: white; position: relative; overflow: hidden;
+}
+.contact::before {
+    content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(63,156,155,.35), transparent 65%); bottom: -170px; right: -100px;
+}
+.contact .container { position: relative; }
+.contact .section-title { color: var(--cream); }
+.contact .section-label { color: var(--sand); }
+.contact p.lead { color: #E5C9C8; max-width: 550px; margin: 0 auto 34px; }
+.contact-details { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+.contact-pill {
+    border: 1px solid rgba(255,255,255,0.3); padding: 13px 24px; border-radius: 30px;
+    font-size: 13px; color: var(--cream); transition: .3s; background: rgba(255,255,255,.06);
+}
+a.contact-pill:hover { background: var(--terracotta); border-color: var(--terracotta); transform: translateY(-3px); }
+
+/* FOOTER */
+footer { background: #35252A; color: #D9BDBB; text-align: center; padding: 25px; font-size: 11px; letter-spacing: 1px; }
+
+/* RESPONSIVE */
+@media(max-width: 980px) {
+    .charts { grid-template-columns: 1fr; }
+    .skills-top { grid-template-columns: 1fr; }
+}
+@media(max-width: 850px) {
+    .hero-grid, .about-grid { grid-template-columns: 1fr; }
+    .hero-art { margin-top: 30px; }
+    .about-art { min-height: 300px; }
+    .achievement-grid { grid-template-columns: repeat(2, 1fr); }
+    .achievement-grid .achievement-card:last-child { grid-column: span 2; }
+    .education-grid { grid-template-columns: 1fr; }
+    .hero { padding: 70px 0; }
+    .featured { grid-template-columns: 1fr; text-align: center; }
+    .featured .medal { margin: auto; }
+    .featured .rank-big { text-align: center; }
+}
+@media(max-width: 600px) {
+    .container { width: 90%; }
+    .nav-content { flex-direction: column; padding: 15px 0; gap: 12px; }
+    .nav-links { gap: 13px; flex-wrap: wrap; justify-content: center; font-size: 11px; }
+    .profile-card { width: 250px; height: 340px; }
+    .profile-initials { font-size: 85px; }
+    .note-one { right: -5px; }
+    .note-two { left: -5px; }
+    .note-three { display: none; }
+    .achievement-grid, .skills-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 0; }
+    .hero h1 { font-size: 57px; }
+}
+
+/* PRINT */
+@media print {
+    nav, .hero-buttons, .print-button, .marquee { display: none !important; }
+    body { background: white; }
+    section { break-inside: avoid; }
+    .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="container nav-content">
+        <a href="#" class="logo">AC.</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+    <div class="container hero-grid">
+
+        <div class="reveal">
+            <div class="eyebrow">Student • Aspiring Business Professional</div>
+
+            <h1>
+                Aayushi<br>
+                <span>Choudhary.</span>
+            </h1>
+
+            <p class="hero-description">
+                Exploring the intersection of business, finance,
+                marketing and innovation. Passionate about learning,
+                creating meaningful ideas and turning opportunities
+                into impact.
+            </p>
+
+            <div class="hero-chips">
+                <span class="chip"><i style="background:var(--teal)"></i>IIM Bangalore</span>
+                <span class="chip"><i style="background:var(--terracotta)"></i>Rajiv Gandhi Institute of Petroleum Technology</span>
+                <span class="chip"><i style="background:var(--plum)"></i>Bengaluru, Karnataka</span>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Explore My Journey ↗</a>
+                <button class="btn btn-outline print-button" onclick="window.print()">Download Resume ↓</button>
+            </div>
+        </div>
+
+        <div class="hero-art reveal">
+            <div class="profile-card">
+                <div class="profile-initials">AC</div>
+            </div>
+
+            <div class="floating-note note-one">Curious Mind ✦</div>
+            <div class="floating-note note-two">Business &amp; Beyond</div>
+
+            <div class="hero-stamp">Creating my own path.</div>
+        </div>
+
+    </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <span>Business Strategy</span><span class="dot">✦</span>
+        <span>Finance</span><span class="dot">✦</span>
+        <span>Marketing</span><span class="dot">✦</span>
+        <span>Entrepreneurship</span><span class="dot">✦</span>
+        <span>Design Thinking</span><span class="dot">✦</span>
+        <span>Energy &amp; Sustainability</span><span class="dot">✦</span>
+        <span>Business Strategy</span><span class="dot">✦</span>
+        <span>Finance</span><span class="dot">✦</span>
+        <span>Marketing</span><span class="dot">✦</span>
+        <span>Entrepreneurship</span><span class="dot">✦</span>
+        <span>Design Thinking</span><span class="dot">✦</span>
+        <span>Energy &amp; Sustainability</span><span class="dot">✦</span>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="container about-grid">
+
+        <div class="about-art reveal">
+            <div class="about-symbol">A.</div>
+        </div>
+
+        <div class="reveal">
+            <div class="section-label">01 — Get to know me</div>
+
+            <h2 class="section-title">
+                More than a student.<br>
+                A work in progress.
+            </h2>
+
+            <p class="about-text">
+                I am an undergraduate business student pursuing
+                BBA in Digital Business and Entrepreneurship from
+                IIM Bangalore, alongside BBA in Energy Management
+                from RGIPT Bengaluru.
+            </p>
+
+            <p class="about-text">
+                My academic journey reflects my curiosity about
+                how businesses work, how markets evolve and how
+                innovative ideas can create value. I enjoy exploring
+                finance, marketing, business strategy and entrepreneurship.
+            </p>
+
+            <p class="about-text">
+                I believe in continuous learning, meaningful
+                collaboration and taking initiative beyond the classroom.
+                My goal is to develop the knowledge, skills and perspective
+                to contribute to the business world.
+            </p>
+
+            <div class="about-tags">
+                <span class="tag">Business Strategy</span>
+                <span class="tag">Finance</span>
+                <span class="tag">Marketing</span>
+                <span class="tag">Entrepreneurship</span>
+                <span class="tag">Energy Management</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+    <div class="container">
+
+        <div class="section-label reveal">02 — Academic background</div>
+        <h2 class="section-title reveal">Education &amp; Learning.</h2>
+
+        <p class="section-intro reveal">
+            Building a multidisciplinary foundation through
+            business education, analytical thinking and continuous learning.
+        </p>
+
+        <div class="education-grid">
+
+            <div class="edu-card reveal">
+                <div class="edu-number">01</div>
+                <h3>Indian Institute of Management Bangalore</h3>
+                <h4>BBA in Digital Business &amp; Entrepreneurship</h4>
+                <p>
+                    Exploring digital business models, entrepreneurship,
+                    management principles and the changing landscape
+                    of technology-driven businesses.
+                </p>
+                <span class="edu-date">2026 – Present</span>
+            </div>
+
+            <div class="edu-card reveal">
+                <div class="edu-number">02</div>
+                <h3>Rajiv Gandhi Institute of Petroleum Technology</h3>
+                <h4>BBA in Energy Management · Bengaluru</h4>
+                <p>
+                    Developing an understanding of business management
+                    and the energy sector, with an interest in the
+                    relationship between business and sustainability.
+                </p>
+                <span class="edu-date">2026 – Present</span>
+            </div>
+
+            <div class="edu-card reveal">
+                <div class="edu-number">03</div>
+                <h3>Delhi Public School</h3>
+                <h4>Class XII · Commerce</h4>
+                <p>
+                    Completed higher secondary education with
+                    85%, developing an academic foundation in
+                    commerce and business-related subjects.
+                </p>
+                <span class="edu-date">Class XII · 2024–2025</span>
+            </div>
+
+            <div class="edu-card reveal">
+                <div class="edu-number">04</div>
+                <h3>Sree Ayyappa Public School</h3>
+                <h4>Class X</h4>
+                <p>
+                    Completed secondary education with 96%,
+                    building a strong academic foundation.
+                </p>
+                <span class="edu-date">Class X</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements" id="achievements">
+    <div class="container">
+
+        <div class="section-label reveal">03 — Milestones</div>
+        <h2 class="section-title reveal">Numbers that tell a story.</h2>
+
+        <p class="section-intro reveal">
+            A few academic milestones that represent my
+            dedication, curiosity and commitment to learning.
+        </p>
+
+        <div class="achievement-grid">
+            <div class="achievement-card reveal">
+                <h3 data-count="96" data-suffix="%">96%</h3>
+                <p>Class X Academic Score</p>
+            </div>
+            <div class="achievement-card reveal">
+                <h3 data-count="85" data-suffix="%">85%</h3>
+                <p>Class XII Academic Score</p>
+            </div>
+            <div class="achievement-card reveal">
+                <h3 data-count="500" data-suffix="">500</h3>
+                <p>NID All India Rank</p>
+            </div>
+            <div class="achievement-card reveal">
+                <h3 data-count="1700" data-suffix="">1700</h3>
+                <p>UCEED All India Rank</p>
+            </div>
+            <div class="achievement-card reveal">
+                <h3 data-count="97" data-suffix="">97</h3>
+                <p>CUET GAT Percentile</p>
+            </div>
+        </div>
+
+        <!-- CHARTS -->
+        <div class="charts">
+
+            <div class="chart-card reveal" data-chart>
+                <h4>Board Exam Scores</h4>
+                <div class="sub">Percentage by class</div>
+                <div class="bars">
+                    <div class="vbar v1"><div class="fill" data-h="96%">96%</div></div>
+                    <div class="vbar v2"><div class="fill" data-h="85%">85%</div></div>
+                </div>
+                <div class="bar-labels"><span>Class X</span><span>Class XII</span></div>
+            </div>
+
+            <div class="chart-card reveal" data-chart>
+                <h4>CUET GAT Percentile</h4>
+                <div class="sub">Out of 100</div>
+                <div class="donut-wrap">
+                    <div class="donut-holder">
+                        <svg class="donut" viewBox="0 0 42 42">
+                            <defs>
+                                <linearGradient id="dgrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0" stop-color="#3F9C9B"/>
+                                    <stop offset="1" stop-color="#7A4C9A"/>
+                                </linearGradient>
+                            </defs>
+                            <circle class="bg" cx="21" cy="21" r="15.9155" pathLength="100"/>
+                            <circle class="fg" cx="21" cy="21" r="15.9155" pathLength="100" data-dash="97 100"/>
+                        </svg>
+                        <div class="donut-center" style="position:absolute;top:0;left:0;right:0;margin-top:60px;">
+                            <b>97</b><small>PERCENTILE</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card reveal" data-chart>
+                <h4>Entrance Ranks</h4>
+                <div class="sub">All India Rank · shorter bar = better rank</div>
+                <div class="ranks">
+                    <div class="rank-row">
+                        <div class="rl"><span>NID</span><span>AIR 500</span></div>
+                        <div class="rank-track"><div class="rank-fill r1" data-w="29.4%"></div></div>
+                    </div>
+                    <div class="rank-row">
+                        <div class="rl"><span>UCEED</span><span>AIR 1700</span></div>
+                        <div class="rank-track"><div class="rank-fill r2" data-w="100%"></div></div>
+                    </div>
+                </div>
+                <div class="chart-note">Bar length is proportional to rank number.</div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+    <div class="container">
+
+        <div class="section-label reveal">04 — Beyond academics</div>
+        <h2 class="section-title reveal">Experiences &amp; Involvement.</h2>
+
+        <p class="section-intro reveal">
+            Learning through collaboration, competitions
+            and active participation in campus initiatives.
+        </p>
+
+        <div class="experience-list">
+
+            <div class="experience-item reveal">
+                <h3>Chaitanya Case Competition</h3>
+                <h4>IIM Indore · Case Competition</h4>
+                <p>
+                    Participated in a case competition and progressed
+                    to the second round. The experience encouraged
+                    structured thinking, problem-solving and the
+                    application of business concepts to practical situations.
+                </p>
+            </div>
+
+            <div class="experience-item reveal">
+                <h3>HR Conclave</h3>
+                <h4>RGIPT Bengaluru · Hospitality &amp; Event Management</h4>
+                <p>
+                    Contributed to the hospitality and event management
+                    team, supporting event coordination and participant
+                    engagement while developing teamwork and communication skills.
+                </p>
+            </div>
+
+            <div class="experience-item reveal">
+                <h3>Continuous Professional Development</h3>
+                <h4>Independent Learning</h4>
+                <p>
+                    Actively exploring finance, marketing, business
+                    strategy and digital business through academic
+                    learning and independent skill development.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+    <div class="container">
+
+        <div class="section-label reveal">05 — What I bring</div>
+        <h2 class="section-title reveal">Skills &amp; Strengths.</h2>
+
+        <p class="section-intro reveal">
+            A growing set of capabilities that I aim to
+            strengthen through practical experience.
+        </p>
+
+        <div class="skill-group radar-card reveal" style="margin-bottom:28px;" data-chart>
+            <h3>Strengths at a Glance</h3>
+            <svg id="radar" viewBox="0 0 360 330" role="img" aria-label="Radar chart of skills"></svg>
+        </div>
+
+        <div class="skills-grid" data-chart>
+
+            <div class="skill-group reveal">
+                <h3>Professional Skills</h3>
+                <div class="skill"><div class="skill-info"><span>Communication</span></div><div class="skill-track"><div class="skill-fill" data-w="85%"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Leadership &amp; Teamwork</span></div><div class="skill-track"><div class="skill-fill" data-w="80%"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Problem Solving</span></div><div class="skill-track"><div class="skill-fill" data-w="78%"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Creative Thinking</span></div><div class="skill-track"><div class="skill-fill" data-w="85%"></div></div></div>
+            </div>
+
+            <div class="skill-group reveal">
+                <h3>Areas of Interest</h3>
+                <div class="skill"><div class="skill-info"><span>Finance &amp; Investments</span></div><div class="skill-track"><div class="skill-fill" data-w="80%"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Marketing</span></div><div class="skill-track"><div class="skill-fill" data-w="85%"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Business Strategy</span></div><div class="skill-track"><div class="skill-fill" data-w="80%"></div></div></div>
+                <div class="skill"><div class="skill-info"><span>Entrepreneurship</span></div><div class="skill-track"><div class="skill-fill" data-w="85%"></div></div></div>
+            </div>
+
+        </div>
+
+        <p style="font-size:11px;color:#7F6B6F;margin-top:15px;">
+            Note: Skill bars and the radar chart are illustrative self-assessments,
+            not independently verified proficiency scores.
+        </p>
+
+    </div>
+</section>
+
+<!-- INTERESTS -->
+<section class="interests">
+    <div class="container">
+
+        <div class="section-label reveal">06 — Beyond the classroom</div>
+        <h2 class="section-title reveal">Curiosity has no limits.</h2>
+
+        <p class="section-intro reveal" style="margin-left:auto;margin-right:auto;">
+            The ideas and fields that keep me curious,
+            motivated and excited to learn.
+        </p>
+
+        <div class="interest-list reveal">
+            <span class="interest">Finance</span>
+            <span class="interest">Marketing</span>
+            <span class="interest">Business Strategy</span>
+            <span class="interest">Entrepreneurship</span>
+            <span class="interest">Digital Innovation</span>
+            <span class="interest">Design Thinking</span>
+            <span class="interest">Energy &amp; Sustainability</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <div class="container">
+
+        <div class="section-label">07 — Let's connect</div>
+
+        <h2 class="section-title">
+            Every great journey<br>
+            starts with a conversation.
+        </h2>
+
+        <p class="lead">
+            I am always open to meaningful conversations,
+            new learning opportunities, collaborations and
+            experiences that help me grow.
+        </p>
+
+        <div class="contact-details">
+
+            <a class="contact-pill" href="mailto:aayushi.choudhary26@iimb.ac.in">
+                ✉ aayushi.choudhary26@iimb.ac.in
+            </a>
+
+            <a class="contact-pill" href="tel:+916299197367">
+                ✆ +91 62991 97367
+            </a>
+
+            <span class="contact-pill">
+                📍 Bengaluru, Karnataka
+            </span>
+
+            <!-- Add your LinkedIn profile URL here -->
+            <a class="contact-pill" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+                ↗ LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 AAYUSHI CHOUDHARY · DESIGNED WITH PURPOSE &amp; CURIOSITY
+</footer>
+
+<script>
+/* ---------- Radar chart ---------- */
+(function () {
+    var data = [
+        ['Communication', 85], ['Leadership', 80], ['Problem Solving', 78], ['Creativity', 85],
+        ['Finance', 80], ['Marketing', 85], ['Strategy', 80], ['Entrepreneurship', 85]
+    ];
+    var svg = document.getElementById('radar');
+    var NS = 'http://www.w3.org/2000/svg';
+    var cx = 180, cy = 165, R = 110, n = data.length;
+
+    function pt(i, v) {
+        var a = (-90 + (360 / n) * i) * Math.PI / 180;
+        return [cx + Math.cos(a) * R * v / 100, cy + Math.sin(a) * R * v / 100];
+    }
+    function el(name, attrs, text) {
+        var e = document.createElementNS(NS, name);
+        for (var k in attrs) e.setAttribute(k, attrs[k]);
+        if (text) e.textContent = text;
+        svg.appendChild(e);
+        return e;
+    }
+
+    var defs = el('defs', {});
+    defs.innerHTML = '<linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0" stop-color="#E8A93B" stop-opacity=".75"/>' +
+        '<stop offset="1" stop-color="#7A4C9A" stop-opacity=".75"/></linearGradient>';
+
+    [25, 50, 75, 100].forEach(function (lvl) {
+        var p = data.map(function (_, i) { return pt(i, lvl).join(','); }).join(' ');
+        el('polygon', { points: p, fill: lvl % 50 === 0 ? 'rgba(220,203,242,.25)' : 'none', stroke: '#E4CFD0', 'stroke-width': 1 });
+    });
+    data.forEach(function (d, i) {
+        var e = pt(i, 100);
+        el('line', { x1: cx, y1: cy, x2: e[0], y2: e[1], stroke: '#E4CFD0', 'stroke-width': 1 });
+        var l = pt(i, 128);
+        var anchor = l[0] < cx - 5 ? 'end' : (l[0] > cx + 5 ? 'start' : 'middle');
+        el('text', { x: l[0], y: l[1] + 4, 'text-anchor': anchor, 'font-size': 11, 'font-weight': 600, fill: '#6B3140', 'font-family': 'DM Sans, sans-serif' }, d[0]);
+    });
+
+    var poly = el('polygon', {
+        points: data.map(function () { return cx + ',' + cy; }).join(' '),
+        fill: 'url(#rg)', stroke: '#A94F58', 'stroke-width': 2, 'stroke-linejoin': 'round'
+    });
+    var dots = data.map(function (d, i) {
+        return el('circle', { cx: cx, cy: cy, r: 4, fill: '#fff', stroke: '#A94F58', 'stroke-width': 2 });
+    });
+
+    var played = false;
+    window.playRadar = function () {
+        if (played) return; played = true;
+        var start = null, dur = 1400;
+        function step(ts) {
+            if (!start) start = ts;
+            var t = Math.min((ts - start) / dur, 1), e = 1 - Math.pow(1 - t, 3);
+            poly.setAttribute('points', data.map(function (d, i) { return pt(i, d[1] * e).join(','); }).join(' '));
+            dots.forEach(function (c, i) {
+                var p = pt(i, data[i][1] * e);
+                c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]);
+            });
+            if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    };
+})();
+
+/* ---------- Scroll reveal ---------- */
+var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('show'); io.unobserve(en.target); }
+    });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function (e) { io.observe(e); });
+
+/* ---------- Animate charts when visible ---------- */
+var chartIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var root = en.target;
+        root.querySelectorAll('.vbar .fill').forEach(function (f) { f.style.height = f.dataset.h; });
+        root.querySelectorAll('.donut .fg').forEach(function (f) { f.style.strokeDasharray = f.dataset.dash; });
+        root.querySelectorAll('.rank-fill, .skill-fill').forEach(function (f) { f.style.width = f.dataset.w; });
+        if (root.querySelector('#radar')) window.playRadar();
+        chartIO.unobserve(root);
+    });
+}, { threshold: 0.25 });
+document.querySelectorAll('[data-chart]').forEach(function (e) { chartIO.observe(e); });
+
+/* ---------- Count-up numbers ---------- */
+var countIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target, end = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null;
+        function step(ts) {
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / 1400, 1);
+            el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf;
+            if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        countIO.unobserve(el);
+    });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-count]').forEach(function (e) { countIO.observe(e); });
+</script>
+
+</body>
+</html>
